@@ -62,14 +62,13 @@ public void Conexion(){
         Query q3 = em.createQuery("select a from Point as a where a.id = 1 ");
         System.out.println(q3.getSingleResult());
         
-        em.getTransaction().begin();
-        Query q4 = em.createQuery("select p from Point p where p.id = 5");
-        //COmo modificar un objeto de una base de datos de objectDB
-        // Se puede emplear el metodo Query.getSingleResult() para obtener asi el resultado
-        //Y almacenarlo en una variable de la clase Point =????
         
-        //Nuevo Query de update para poder actualizar el valor ???
-        Point point = (Point) q4.getSingleResult();
+        //Nuevo metodo de actualizar de la base de datos
+        
+        em.getTransaction().begin();
+        Query q4 = em.createQuery("update Point set x = 10 where id = :p");
+        int conta = q4.setParameter("p",10).executeUpdate();
+      
         
         
         em.getTransaction().commit();
