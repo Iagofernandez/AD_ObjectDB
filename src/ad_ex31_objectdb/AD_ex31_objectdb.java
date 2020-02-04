@@ -62,7 +62,12 @@ public void Conexion(){
         Query q3 = em.createQuery("select a from Point as a where a.id = 1 ");
         System.out.println(q3.getSingleResult());
         
+        em.getTransaction().begin();
+        Query q4 = em.createQuery("select p from Point p where p.id = 5");
+        //COmo modificar un objeto de una base de datos de objectDB
         
+        
+        em.getTransaction().commit();
 
         //Cerrando las conexiones :
         em.close();
